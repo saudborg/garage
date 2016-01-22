@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+<title>The Garage</title>
+<!--/*/ <th:block th:include="includes/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="includes/header :: header"></th:block> /*/-->
+
+		<div>
+			<h3>Where is the vehicle</h3>
+			<div>
+				<form class="form-horizontal" th:object="${space}"
+					th:action="@{/removeVehicle}" method="post">
+					<input type="hidden" th:field="*{id}" />
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Floor:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static"
+								th:text="${space.parkingLevel.number}">floor</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Space:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static" th:text="${space.number}">space</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Type:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static" th:text="${space.vehicle.type}">type</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Licence Plate:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static"
+								th:text="${space.vehicle.licencePlate}">licence plate</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Time Entered</label>
+						<div class="col-sm-10">
+							<p class="form-control-static" th:text="${space.timeEnterStr}">time
+								enter</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2 col-sm-offset-2">
+							<button type="submit" class="btn btn-warning">Take out
+								vehicle</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

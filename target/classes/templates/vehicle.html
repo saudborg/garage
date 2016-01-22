@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+<title>The Garage</title>
+<!--/*/ <th:block th:include="includes/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="includes/header :: header"></th:block> /*/-->
+
+		<h3>Search By Licence Plate</h3>
+		<div>
+			<form class="form-horizontal" th:object="${licencePlateForm}"
+				th:action="@{/searchVehicle}" method="post">
+				<div class="form-group">
+					<label class="col-md-4 control-label">Licence Plate:</label>
+					<div class="col-md-4">
+						<td><input type="text" class="form-control"
+							th:field="*{licencePlate}" /></td>
+						<td th:if="${#fields.hasErrors('licencePlate')}"
+							th:errors="*{licencePlate}">Licence Plate Error</td>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4 col-sm-offset-4">
+						<button type="submit" class="btn btn-success">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

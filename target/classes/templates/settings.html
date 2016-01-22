@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+<title>The Garage</title>
+<!--/*/ <th:block th:include="includes/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="includes/header :: header"></th:block> /*/-->
+
+		<div class="alert alert-warning" role="alert">
+			<p>If you press submit, all the spaces will be free again</p>
+		</div>
+
+
+		<h3>Settings Details</h3>
+		<div>
+			<form class="form-horizontal" th:object="${settingsForm}"
+				th:action="@{/saveSettings}" method="post">
+				<div class="form-group">
+					<label class="col-sm-5 control-label">Number of floors:</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" th:field="*{levels}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-5 control-label">Number of spaces per
+						flor:</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" th:field="*{spaces}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-5 control-label">Would you like to
+						fill how many spaces:</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" th:field="*{fillSpaces}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-5 col-sm-offset-5">
+						<button type="submit" class="btn btn-success">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

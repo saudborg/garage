@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+<title>The Garage</title>
+<!--/*/ <th:block th:include="includes/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="includes/header :: header"></th:block> /*/-->
+
+		<h3>Create a Vehicle</h3>
+		<div>
+			<form class="form-horizontal" th:object="${vehicle}"
+				th:action="@{/saveVehicle}" method="post">
+
+
+				<div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger"
+					role="alert">
+					<p th:each="err : ${#fields.allErrors()}" th:text="${err}">...</p>
+				</div>
+
+
+				<div th:if="${msgCreate} != null" class="alert alert-info"
+					role="alert">
+					<p class="form-control-static" th:text="${msgCreate}"></p>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Type:</label>
+
+					<div th:fragment="type (selected)" class="col-sm-4">
+						<label
+							th:each="type : ${T(com.sauloborges.ysura.domain.TypeVehiclesEnum).values()}"
+							th:for="${#ids.next('type')}" class="btn btn-default"
+							th:classappend="type == selected ? 'active'"> <input
+							type="radio" th:name="type" th:field="*{type}" th:text="' ' + ${type}"
+							th:value="${type}" />
+						</label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Licence Plate:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{licencePlate}" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-2 col-sm-offset-2">
+						<button type="submit" class="btn btn-success">Save and
+							put in garage</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
